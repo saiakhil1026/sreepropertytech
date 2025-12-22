@@ -94,10 +94,10 @@ const Services: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <div 
-              key={index} 
+            <div
+              key={index}
               style={{ transitionDelay: `${index * 150}ms` }}
-              className={`group p-10 bg-white/5 border border-white/10 hover:border-yellow-600/50 transition-all duration-500 hover:-translate-y-2 relative overflow-hidden reveal-item ${isRevealed ? 'revealed' : ''}`}
+              className={`group p-10 bg-white/5 border border-white/10 hover:border-yellow-600/50 transition-all duration-500 hover:-translate-y-2 relative overflow-hidden reveal-item h-full flex flex-col ${isRevealed ? 'revealed' : ''}`}
             >
               <div className="absolute top-0 right-0 w-24 h-24 bg-yellow-600/5 -mr-12 -mt-12 rounded-full group-hover:bg-yellow-600/10 transition-colors"></div>
               {service.icon}

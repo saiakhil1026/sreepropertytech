@@ -3,8 +3,32 @@ import React from 'react';
 import ContactForm from './ContactForm';
 
 const Footer: React.FC = () => {
+  const [isRevealed, setIsRevealed] = React.useState(false);
+  const sectionRef = React.useRef<HTMLElement>(null);
+
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsRevealed(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <footer id="contact" className="bg-black pt-24 pb-12 border-t border-white/5 relative overflow-hidden">
+    <footer id="contact" ref={sectionRef} className="bg-black pt-24 pb-12 border-t border-white/5 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-yellow-600/30 to-transparent"></div>
 
@@ -12,7 +36,7 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 mb-20">
 
           {/* Left Side: Brand & Links */}
-          <div className="lg:col-span-5 flex flex-col justify-between">
+          <div className={`lg:col-span-5 flex flex-col justify-between reveal-item ${isRevealed ? 'revealed' : ''}`}>
             <div className="space-y-12">
               {/* Brand Info */}
               <div>
@@ -69,7 +93,7 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Right Side: Resized Enquiry Section */}
-          <div className="lg:col-span-7">
+          <div className={`lg:col-span-7 reveal-item ${isRevealed ? 'revealed' : ''}`} style={{ transitionDelay: '200ms' }}>
             <ContactForm />
           </div>
 
