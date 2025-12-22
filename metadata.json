@@ -1,0 +1,8 @@
+{
+  "name": "SreePropertyTech - Elite NRI Property Management.",
+  "description": "A premium, luxury property management platform designed exclusively for Non-Resident Indians (NRIs), offering seamless management, high ROI, and total peace of mind for their Indian real estate assets.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
