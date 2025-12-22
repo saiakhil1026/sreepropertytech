@@ -36,7 +36,7 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 mb-20">
 
           {/* Left Side: Brand & Links */}
-          <div className={`lg:col-span-5 flex flex-col justify-between reveal-item ${isRevealed ? 'revealed' : ''}`}>
+          <div className={`lg:col-span-5 flex flex-col justify-between reveal-item ${isRevealed ? 'revealed' : ''} order-last lg:order-first`}>
             <div className="space-y-12">
               {/* Brand Info */}
               <div>
