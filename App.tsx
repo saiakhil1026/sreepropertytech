@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
-import Portfolio from './components/Portfolio';
+
 import WhyUs from './components/WhyUs';
 import GeminiConcierge from './components/GeminiConcierge';
 import WhatsAppFloat from './components/WhatsAppFloat';
@@ -35,7 +35,7 @@ function App() {
         <Hero />
         <WhyUs />
         <Services />
-        
+
         {/* Call to Action Section */}
         <section className="py-20 relative overflow-hidden">
           <div className="absolute inset-0 bg-yellow-600"></div>
@@ -44,7 +44,7 @@ function App() {
               <h2 className="text-4xl md:text-5xl font-serif text-black mb-4">Start Your Elite Journey</h2>
               <p className="text-black/80 font-medium tracking-wide">Join 500+ HNI NRIs who trust SreePropertyTech with their Indian assets.</p>
             </div>
-            <button 
+            <button
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               className="px-12 py-5 bg-black text-white font-bold uppercase tracking-widest hover:bg-black/90 transition-all rounded-sm shadow-2xl"
             >
@@ -53,8 +53,8 @@ function App() {
           </div>
         </section>
 
-        <Portfolio />
-        
+
+
         {/* The Contact/Enquiry logic is now integrated into the Footer for a split-screen premium layout */}
       </main>
       <Footer />

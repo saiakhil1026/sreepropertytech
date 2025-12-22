@@ -7,16 +7,16 @@ const WhyUs: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <div className="relative">
-             <div className="absolute -top-10 -left-10 w-40 h-40 border-8 border-yellow-500/10 -z-0"></div>
-             <img 
-               src="https://images.unsplash.com/photo-1577412647305-991150c7d163?q=80&w=2070&auto=format&fit=crop" 
-               alt="Luxury Meeting" 
-               className="relative z-10 w-full rounded-sm grayscale hover:grayscale-0 transition-all duration-1000"
-             />
-             <div className="absolute -bottom-6 -right-6 p-8 bg-black text-white max-w-[200px] z-20">
-                <span className="text-5xl font-serif text-yellow-500 block mb-2">15+</span>
-                <p className="text-xs uppercase tracking-widest leading-relaxed">Years of NRI Trust Excellence</p>
-             </div>
+            <div className="absolute -top-10 -left-10 w-40 h-40 border-8 border-yellow-500/10 -z-0"></div>
+            <img
+              src="https://images.unsplash.com/photo-1577412647305-991150c7d163?q=80&w=2070&auto=format&fit=crop"
+              alt="Luxury Meeting"
+              className="relative z-10 w-full rounded-sm grayscale hover:grayscale-0 transition-all duration-1000"
+            />
+            <div className="absolute -bottom-6 -right-6 p-8 bg-black text-white max-w-[200px] z-20">
+              <span className="text-5xl font-serif text-yellow-500 block mb-2">15+</span>
+              <p className="text-xs uppercase tracking-widest leading-relaxed">Years of NRI Trust Excellence</p>
+            </div>
           </div>
 
           <div>
@@ -37,13 +37,7 @@ const WhyUs: React.FC = () => {
                   <p className="text-gray-600 font-light leading-relaxed">Audit-ready accounting and legally sound documentation, accessible through your private investor dashboard 24/7.</p>
                 </div>
               </div>
-              <div className="flex gap-6">
-                <div className="flex-shrink-0 w-12 h-12 rounded-full border border-black/10 flex items-center justify-center font-serif text-xl">03</div>
-                <div>
-                  <h4 className="text-xl font-serif mb-2">Global Compliance</h4>
-                  <p className="text-gray-600 font-light leading-relaxed">Understanding FEMA and NRI tax laws is at our core. We ensure you stay compliant without lifting a finger.</p>
-                </div>
-              </div>
+
             </div>
           </div>
         </div>

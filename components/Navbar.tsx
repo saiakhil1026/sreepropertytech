@@ -9,10 +9,10 @@ const Navbar: React.FC = () => {
           <div className="w-10 h-10 bg-gradient-to-tr from-yellow-600 to-yellow-200 rounded-lg flex items-center justify-center font-bold text-black text-xl">S</div>
           <span className="text-xl font-bold tracking-tighter text-white uppercase">Sree<span className="text-yellow-500">Property</span>Tech</span>
         </div>
-        
+
         <div className="hidden md:flex items-center space-x-10 text-sm font-medium tracking-widest text-gray-300 uppercase">
           <a href="#services" className="hover:text-yellow-500 transition-colors">Services</a>
-          <a href="#portfolio" className="hover:text-yellow-500 transition-colors">Portfolio</a>
+
           <a href="#about" className="hover:text-yellow-500 transition-colors">Why NRIs</a>
           <a href="#contact" className="hover:text-yellow-500 transition-colors">Contact</a>
         </div>
