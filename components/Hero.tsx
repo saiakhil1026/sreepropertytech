@@ -14,7 +14,7 @@ const Hero: React.FC = () => {
 
       <div className="relative z-10 text-center max-w-5xl px-6">
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif text-white mb-8 leading-tight animate-fade-in-up">
-          Property Management <br />
+          Property Care <br />
           <span className="gradient-gold">Exclusively for NRIs</span>
         </h1>
         <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto font-light tracking-wide leading-relaxed">
