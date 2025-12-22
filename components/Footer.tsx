@@ -63,7 +63,7 @@ const Footer: React.FC = () => {
               </div>
 
               {/* Quick Links Group */}
-              <div className="grid grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
                   <h4 className="text-white text-[10px] uppercase tracking-widest font-bold mb-6">Explore</h4>
                   <ul className="space-y-3 text-gray-500 text-xs font-medium">
