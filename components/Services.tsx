@@ -12,8 +12,8 @@ const services = [
     )
   },
   {
-    title: "Parent Care",
-    description: "Decicated care for your loved parents",
+    title: "Concierge Maintenance",
+    description: "Immaculate maintenance services ranging from cleaning to structural repairs.",
     icon: (
       <svg className="w-10 h-10 mb-4 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
@@ -30,7 +30,7 @@ const services = [
     )
   },
   {
-    title: "Shopping services",
+    title: "Shopping Assistance",
     description: "Exclusive assistance in buying quality products, ensuring optimal value and seamless transactions.",
     icon: (
       <svg className="w-10 h-10 mb-4 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -48,7 +48,7 @@ const services = [
     )
   },
   {
-    title: "Interior Design",
+    title: "Interiors",
     description: "Renovating and staging properties to command premium rentals and valuation.",
     icon: (
       <svg className="w-10 h-10 mb-4 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
