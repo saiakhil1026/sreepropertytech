@@ -77,8 +77,8 @@ const ParentalCare: React.FC = () => {
                         <div className="relative z-10 overflow-hidden rounded-sm shadow-2xl group">
                             <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all duration-700"></div>
                             <img
-                                src="https://images.unsplash.com/photo-1516733968668-cbddc31c1821?q=80&w=2070&auto=format&fit=crop"
-                                alt="Compassionate Care"
+                                src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?q=80&w=2070&auto=format&fit=crop"
+                                alt=""
                                 className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-1000 ease-out"
                             />
                         </div>
