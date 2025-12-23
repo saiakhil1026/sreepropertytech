@@ -37,9 +37,10 @@ const WhyUs: React.FC = () => {
               alt="Luxury Meeting"
               className="relative z-10 w-full rounded-sm grayscale hover:grayscale-0 transition-all duration-1000 shadow-xl"
             />
-            <div className="absolute -bottom-6 -right-6 p-6 md:p-8 bg-black text-white max-w-[160px] md:max-w-[200px] z-20 shadow-2xl">
-              <span className="text-3xl md:text-5xl font-serif text-yellow-500 block mb-2">15+</span>
-              <p className="text-[10px] md:text-xs uppercase tracking-widest leading-relaxed">Years of NRI Trust Excellence</p>
+            <div className="absolute -bottom-6 -right-6 p-8 md:p-10 bg-black text-white z-20 shadow-2xl border border-yellow-500/20 flex flex-col items-center justify-center text-center">
+              <p className="text-xl md:text-3xl font-serif text-yellow-500 leading-tight tracking-wide">
+                Trust <br /> Our <br /> <span className="text-white">Excellence</span>
+              </p>
             </div>
           </div>
 
