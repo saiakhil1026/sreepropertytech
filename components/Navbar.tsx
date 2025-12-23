@@ -13,7 +13,7 @@ const Navbar: React.FC = () => {
         <div className="hidden md:flex items-center space-x-10 text-sm font-medium tracking-widest text-gray-300 uppercase">
           <a href="#about" className="hover:text-yellow-500 transition-colors">Why NRIs</a>
           <a href="#services" className="hover:text-yellow-500 transition-colors">Services</a>
-          <a href="#parental-care" className="hover:text-yellow-500 transition-colors">Guardian Services</a>
+          <a href="#assistance" className="hover:text-yellow-500 transition-colors">Assistance</a>
           <a href="#contact" className="hover:text-yellow-500 transition-colors">Contact</a>
         </div>
 
