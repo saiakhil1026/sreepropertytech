@@ -54,9 +54,9 @@ const Footer: React.FC = () => {
                     const socialLinks: { [key: string]: string } = {
                       Instagram: 'https://www.instagram.com/sreepropertytech/',
                       Twitter: '#',
-                      Facebook: '#',
+                      Facebook: 'https://www.facebook.com/sreepropertytech/',
                       YouTube: '#',
-                      Threads: '#',
+                      Threads: 'https://www.threads.net/@sreepropertytech/',
                     };
                     return (
                       <a key={social} href={socialLinks[social]} target="_blank" rel="noopener noreferrer" className="w-9 h-9 border border-white/10 rounded-full flex items-center justify-center text-gray-500 hover:text-yellow-500 hover:border-yellow-500 hover:bg-yellow-600/5 transition-all group">
