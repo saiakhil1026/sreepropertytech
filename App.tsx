@@ -39,7 +39,7 @@ function App() {
         <Assistance />
 
         {/* Call to Action Section */}
-        <section className="py-20 relative overflow-hidden">
+        <section id="cta" className="py-20 relative overflow-hidden">
           <div className="absolute inset-0 bg-yellow-600"></div>
           <div className="relative z-10 max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-10">
             <div className="max-w-2xl">

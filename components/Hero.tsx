@@ -3,7 +3,7 @@ import React from 'react';
 
 const Hero: React.FC = () => {
   return (
-    <div className="relative h-screen w-full flex items-center justify-center overflow-hidden">
+    <div id="hero" className="relative h-screen w-full flex items-center justify-center overflow-hidden">
       {/* Background with Parallax-like feel */}
       <div
         className="absolute inset-0 bg-cover bg-center z-0 scale-110"
