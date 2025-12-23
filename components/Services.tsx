@@ -52,6 +52,22 @@ const services = [
     )
   },
   {
+    title: "Legal Services",
+    description: "Expert legal guidance for property matters, ensuring total compliance and peace of mind.",
+    details: [
+      "Title verification and due diligence.",
+      "Sale deed drafting and registration.",
+      "Property dispute resolution and litigation support.",
+      "NRI-specific legal compliance (FEMA/RBI regulations).",
+      "Inheritance, wills, and succession planning."
+    ],
+    icon: (
+      <svg className="w-10 h-10 mb-4 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path>
+      </svg>
+    )
+  },
+  {
     title: "Property Monitoring",
     description: "Video inspections accessible from anywhere, providing absolute peace of mind.",
     details: [

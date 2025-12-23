@@ -68,10 +68,10 @@ const Footer: React.FC = () => {
                 <div>
                   <h4 className="text-white text-[10px] uppercase tracking-widest font-bold mb-6">Explore</h4>
                   <ul className="space-y-3 text-gray-500 text-xs font-medium">
-                    <li><a href="#services" className="hover:text-yellow-500 transition-colors">Services</a></li>
-
                     <li><a href="#about" className="hover:text-yellow-500 transition-colors">Why NRIs</a></li>
-                    <li><a href="#" className="hover:text-yellow-500 transition-colors">Success Stories</a></li>
+                    <li><a href="#services" className="hover:text-yellow-500 transition-colors">Services</a></li>
+                    <li><a href="#assistance" className="hover:text-yellow-500 transition-colors">Assistance</a></li>
+                    <li><a href="#contact" className="hover:text-yellow-500 transition-colors">Contact</a></li>
                   </ul>
                 </div>
                 <div>
