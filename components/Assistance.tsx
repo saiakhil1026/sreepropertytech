@@ -12,6 +12,8 @@ const assistanceServices = [
             "Regular updates to family members abroad.",
             "Dedicated care manager assignment."
         ],
+        terms: "Emergency services subject to local availability. Medical expenses at actuals.",
+        image: "/guardian_assistance.png",
         icon: (
             <svg className="w-10 h-10 mb-4 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
@@ -28,6 +30,8 @@ const assistanceServices = [
             "Coordination of logistics and delivery.",
             "Expert advice on product authenticity and value."
         ],
+        terms: "Product availability & pricing subject to brand. Concierge fee applicable.",
+        image: "/shopping_assistance.png",
         icon: (
             <svg className="w-10 h-10 mb-4 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
@@ -44,6 +48,8 @@ const assistanceServices = [
             "Luxury local transport arrangements.",
             "24/7 travel concierge support."
         ],
+        terms: "Bookings subject to operator availability. Cancellation policies apply as per vendor.",
+        image: "/travel_assistance.png",
         icon: (
             <svg className="w-10 h-10 mb-4 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -60,6 +66,8 @@ const assistanceServices = [
             "On-site coordination and supervision.",
             "Post-event wrap-up and settlements."
         ],
+        terms: "Event dates subject to venue availability. 50% advance for booking confirmation.",
+        image: "/event_management.png",
         icon: (
             <svg className="w-10 h-10 mb-4 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"></path>
@@ -136,31 +144,50 @@ const Assistance: React.FC = () => {
                             {/* Background accent */}
                             <div className="absolute top-0 right-0 w-64 h-64 bg-yellow-600/5 -mr-20 -mt-20 rounded-full blur-3xl pointer-events-none"></div>
 
-                            <div className="flex flex-col md:flex-row gap-12 items-start relative z-10">
-                                <div className="flex-shrink-0">
-                                    <div className="p-6 bg-yellow-50 rounded-full inline-block">
-                                        {React.cloneElement(selectedService.icon as React.ReactElement, { className: "w-16 h-16 text-yellow-600" })}
-                                    </div>
-                                </div>
-
-                                <div className="flex-grow">
+                            <div className="relative z-10">
+                                <div className="flex-grow w-full">
                                     <h3 className="text-3xl md:text-4xl font-serif text-black mb-6">{selectedService.title}</h3>
-                                    <p className="text-xl text-gray-600 font-light leading-relaxed mb-8 border-l-2 border-yellow-600 pl-6">
-                                        {selectedService.description}
-                                    </p>
 
-                                    <div className="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
-                                        <h4 className="text-yellow-600 uppercase tracking-wider text-xs font-bold mb-6">Service Highlights</h4>
-                                        <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8">
-                                            {selectedService.details.map((point, idx) => (
-                                                <li key={idx} className="flex items-start text-gray-700">
-                                                    <svg className="w-5 h-5 text-yellow-600 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                                                    </svg>
-                                                    <span className="leading-relaxed">{point}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
+                                    <div className="flex flex-col xl:flex-row gap-10 items-start">
+                                        {/*@ts-ignore*/}
+                                        {selectedService.image && (
+                                            <div className="w-full xl:w-2/5 flex-shrink-0 order-1 xl:order-1">
+                                                <div className="rounded-lg overflow-hidden border border-gray-200 shadow-xl">
+                                                    <img
+                                                        /*@ts-ignore*/
+                                                        src={selectedService.image}
+                                                        alt={selectedService.title}
+                                                        className="w-full object-cover hover:scale-105 transition-transform duration-700"
+                                                    />
+                                                </div>
+                                            </div>
+                                        )}
+
+                                        <div className="flex-1 order-2 xl:order-2">
+                                            <p className="text-xl text-gray-600 font-light leading-relaxed mb-8 border-l-2 border-yellow-600 pl-6">
+                                                {selectedService.description}
+                                            </p>
+
+                                            <div className="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+                                                <h4 className="text-yellow-600 uppercase tracking-wider text-xs font-bold mb-6">Service Highlights</h4>
+                                                <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8">
+                                                    {selectedService.details.map((point, idx) => (
+                                                        <li key={idx} className="flex items-start text-gray-700">
+                                                            <svg className="w-5 h-5 text-yellow-600 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                                                            </svg>
+                                                            <span className="leading-relaxed">{point}</span>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                                {/* Terms and Conditions */}
+                                                <div className="mt-8 pt-6 border-t border-gray-100">
+                                                    <p className="text-[10px] text-gray-400 font-light tracking-wide uppercase">
+                                                        * Terms & Conditions: <span className="text-gray-500 normal-case tracking-normal">{selectedService.terms}</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

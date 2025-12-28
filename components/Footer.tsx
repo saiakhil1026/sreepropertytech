@@ -54,8 +54,8 @@ const Footer: React.FC = () => {
                     const socialLinks: { [key: string]: string } = {
                       Instagram: 'https://www.instagram.com/sreepropertytech/',
                       Twitter: 'https://x.com/sreepropertytec',
-                      Facebook: 'https://www.facebook.com/sreepropertytech/',
-                      YouTube: '#',
+                      Facebook: 'https://www.facebook.com/profile.php?id=61585614607415',
+                      YouTube: 'https://www.youtube.com/@SreePropertyTech',
                       Threads: 'https://www.threads.net/@sreepropertytech',
                     };
                     return (
@@ -117,7 +117,7 @@ const Footer: React.FC = () => {
         {/* Footer Legal Bottom */}
         <div className="pt-8 flex flex-col md:flex-row justify-end items-center text-gray-700 text-[9px] uppercase tracking-widest font-bold gap-6">
           <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-          <a href="#" className="hover:text-white transition-colors">Terms of Engagement</a>
+          <a href="#" className="hover:text-white transition-colors">Terms and Conditions</a>
           <a href="#" className="hover:text-white transition-colors">Grievance Cell</a>
         </div>
       </div>

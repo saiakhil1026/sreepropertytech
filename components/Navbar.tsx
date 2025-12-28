@@ -84,28 +84,28 @@ const Navbar: React.FC = () => {
             <a
               href="#about"
               onClick={() => setIsMobileMenuOpen(false)}
-              className={`px-4 py-3 text-left text-sm font-medium tracking-widest uppercase rounded-lg transition-all duration-300 border-l-2 border-transparent hover:border-yellow-500 ${textColor === 'white' ? 'text-gray-300 hover:bg-white/5 hover:text-yellow-500' : 'text-gray-800 hover:bg-black/5 hover:text-black'}`}
+              className={`px-4 py-3 text-left text-xl font-bold tracking-widest uppercase rounded-lg transition-all duration-300 border-l-2 border-transparent hover:border-yellow-500 ${textColor === 'white' ? 'text-gray-300 hover:bg-white/5 hover:text-yellow-500' : 'text-gray-800 hover:bg-black/5 hover:text-black'}`}
             >
               Why NRIs
             </a>
             <a
               href="#services"
               onClick={() => setIsMobileMenuOpen(false)}
-              className={`px-4 py-3 text-left text-sm font-medium tracking-widest uppercase rounded-lg transition-all duration-300 border-l-2 border-transparent hover:border-yellow-500 ${textColor === 'white' ? 'text-gray-300 hover:bg-white/5 hover:text-yellow-500' : 'text-gray-800 hover:bg-black/5 hover:text-black'}`}
+              className={`px-4 py-3 text-left text-xl font-bold tracking-widest uppercase rounded-lg transition-all duration-300 border-l-2 border-transparent hover:border-yellow-500 ${textColor === 'white' ? 'text-gray-300 hover:bg-white/5 hover:text-yellow-500' : 'text-gray-800 hover:bg-black/5 hover:text-black'}`}
             >
               Services
             </a>
             <a
               href="#assistance"
               onClick={() => setIsMobileMenuOpen(false)}
-              className={`px-4 py-3 text-left text-sm font-medium tracking-widest uppercase rounded-lg transition-all duration-300 border-l-2 border-transparent hover:border-yellow-500 ${textColor === 'white' ? 'text-gray-300 hover:bg-white/5 hover:text-yellow-500' : 'text-gray-800 hover:bg-black/5 hover:text-black'}`}
+              className={`px-4 py-3 text-left text-xl font-bold tracking-widest uppercase rounded-lg transition-all duration-300 border-l-2 border-transparent hover:border-yellow-500 ${textColor === 'white' ? 'text-gray-300 hover:bg-white/5 hover:text-yellow-500' : 'text-gray-800 hover:bg-black/5 hover:text-black'}`}
             >
               Assistance
             </a>
             <a
               href="#contact"
               onClick={() => setIsMobileMenuOpen(false)}
-              className={`px-4 py-3 text-left text-sm font-medium tracking-widest uppercase rounded-lg transition-all duration-300 border-l-2 border-transparent hover:border-yellow-500 ${textColor === 'white' ? 'text-gray-300 hover:bg-white/5 hover:text-yellow-500' : 'text-gray-800 hover:bg-black/5 hover:text-black'}`}
+              className={`px-4 py-3 text-left text-xl font-bold tracking-widest uppercase rounded-lg transition-all duration-300 border-l-2 border-transparent hover:border-yellow-500 ${textColor === 'white' ? 'text-gray-300 hover:bg-white/5 hover:text-yellow-500' : 'text-gray-800 hover:bg-black/5 hover:text-black'}`}
             >
               Contact
             </a>

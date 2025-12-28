@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
 import Assistance from './components/Assistance';
+import Reviews from './components/Reviews';
 
 import WhyUs from './components/WhyUs';
 import GeminiConcierge from './components/GeminiConcierge';
@@ -37,6 +38,7 @@ function App() {
         <WhyUs />
         <Services />
         <Assistance />
+        <Reviews />
 
         {/* Call to Action Section */}
         <section id="cta" className="py-20 relative overflow-hidden">

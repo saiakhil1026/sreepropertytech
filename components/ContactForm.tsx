@@ -140,8 +140,8 @@ const ContactForm: React.FC = () => {
     };
   }, []);
 
-  const selectedCountry = useMemo(() => 
-    countryData.find(c => c.code === selectedCountryCode) || countryData[0], 
+  const selectedCountry = useMemo(() =>
+    countryData.find(c => c.code === selectedCountryCode) || countryData[0],
     [selectedCountryCode]
   );
 
@@ -166,20 +166,19 @@ const ContactForm: React.FC = () => {
   };
 
   const getEntranceClass = (delay: number) => {
-    return `transition-all duration-1000 ease-out transform ${
-      isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-    }`;
+    return `transition-all duration-1000 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+      }`;
   };
 
   const fieldGroupClass = "group relative border-l-2 border-transparent focus-within:border-yellow-600 focus-within:pl-4 transition-all duration-500 ease-in-out";
 
   return (
-    <div 
+    <div
       ref={containerRef}
       className="bg-white/5 border border-white/10 p-8 md:p-12 rounded-sm shadow-2xl relative overflow-hidden"
     >
       <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-600/5 -mr-16 -mt-16 rounded-full blur-3xl"></div>
-      
+
       <div className={`mb-8 ${getEntranceClass(0)}`} style={{ transitionDelay: '0ms' }}>
         <span className="text-yellow-600 uppercase tracking-[0.3em] text-[10px] font-bold block mb-2">Private Access</span>
         <h3 className="text-2xl md:text-3xl font-serif text-white mb-2 leading-tight">Request Invitation</h3>
@@ -188,25 +187,25 @@ const ContactForm: React.FC = () => {
 
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className={`${fieldGroupClass} ${getEntranceClass(100)}`} style={{ transitionDelay: '100ms' }}>
-          <input 
+          <input
             required
-            type="text" 
+            type="text"
             name="name"
             value={formData.name}
             onChange={handleInputChange}
-            placeholder="Full Legal Name" 
+            placeholder="Full Name"
             className="bg-transparent border-b border-white/10 px-0 py-4 text-white w-full focus:outline-none focus:border-yellow-600/0 transition-all font-light tracking-wide text-sm"
           />
         </div>
-        
+
         <div className={`${fieldGroupClass} ${getEntranceClass(200)}`} style={{ transitionDelay: '200ms' }}>
-          <input 
+          <input
             required
-            type="email" 
+            type="email"
             name="email"
             value={formData.email}
             onChange={handleInputChange}
-            placeholder="Professional Email Address" 
+            placeholder="Email Address"
             className="bg-transparent border-b border-white/10 px-0 py-4 text-white w-full focus:outline-none focus:border-yellow-600/0 transition-all font-light tracking-wide text-sm"
           />
         </div>
@@ -239,13 +238,13 @@ const ContactForm: React.FC = () => {
                   {selectedCountry.dial_code}
                 </span>
               </div>
-              <input 
+              <input
                 required
-                type="tel" 
+                type="tel"
                 name="phone"
                 value={formData.phone}
                 onChange={handleInputChange}
-                placeholder="Contact Number" 
+                placeholder="Contact Number"
                 className="bg-transparent border-b border-white/10 pl-16 py-4 text-white w-full focus:outline-none focus:border-yellow-600/0 transition-all font-light tracking-wide text-sm"
               />
             </div>
@@ -253,33 +252,33 @@ const ContactForm: React.FC = () => {
         </div>
 
         <div className={`${fieldGroupClass} ${getEntranceClass(400)}`} style={{ transitionDelay: '400ms' }}>
-          <textarea 
+          <textarea
             required
             name="description"
             value={formData.description}
             onChange={handleInputChange}
-            placeholder="Portfolio Requirements or Property Details" 
+            placeholder="Description"
             rows={3}
             className="bg-transparent border-b border-white/10 px-0 py-4 text-white w-full focus:outline-none focus:border-yellow-600/0 transition-all font-light tracking-wide text-sm resize-none"
           ></textarea>
         </div>
-        
+
         <div className={`pt-4 ${getEntranceClass(500)}`} style={{ transitionDelay: '500ms' }}>
-          <button 
-            type="submit" 
+          <button
+            type="submit"
             className="w-full relative overflow-hidden bg-yellow-600 text-black font-bold uppercase tracking-[0.2em] text-xs py-5 hover:bg-yellow-500 transition-all shadow-xl hover:scale-[1.01] active:scale-95 group/btn"
           >
             <div className="absolute inset-0 shimmer-bg opacity-0 group-hover/btn:opacity-100 transition-opacity pointer-events-none"></div>
             <span className="relative z-10">Submit Request</span>
           </button>
         </div>
-        
+
         <div className={`flex items-center justify-center space-x-4 mt-6 opacity-40 ${getEntranceClass(600)}`} style={{ transitionDelay: '600ms' }}>
-           <div className="h-px w-8 bg-white/20"></div>
-           <p className="text-[9px] text-gray-400 uppercase tracking-[0.3em] font-bold">
-             Secure NRI Encryption
-           </p>
-           <div className="h-px w-8 bg-white/20"></div>
+          <div className="h-px w-8 bg-white/20"></div>
+          <p className="text-[9px] text-gray-400 uppercase tracking-[0.3em] font-bold">
+            Secure NRI Encryption
+          </p>
+          <div className="h-px w-8 bg-white/20"></div>
         </div>
       </form>
     </div>
