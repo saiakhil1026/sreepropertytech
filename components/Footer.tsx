@@ -44,8 +44,8 @@ const Footer: React.FC = () => {
                   <div className="w-8 h-8 bg-yellow-600 rounded flex items-center justify-center font-bold text-black text-lg shadow-lg shadow-yellow-600/20">S</div>
                   <span className="text-lg font-bold tracking-tighter text-white uppercase">Sree<span className="text-yellow-500">Property</span>Tech</span>
                 </div>
-                <p className="text-gray-400 text-sm leading-relaxed max-w-sm font-light">
-                  The premier choice for global Indians. We manage your most prestigious Property portfolios across Andhra Pradesh and Telangana with absolute transparency and global standards.
+                <p className="text-gray-400 text-sm leading-relaxed max-w-sm font-light text-justify">
+                  The premier choice for global Indians. We manage your most prestigious property portfolios across Andhra Pradesh and Telangana with absolute transparency and global standards.
                 </p>
 
                 {/* Socials */}

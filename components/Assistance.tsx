@@ -103,11 +103,16 @@ const Assistance: React.FC = () => {
         };
     }, []);
 
-    // Scroll to top of section when detail view opens
+    // Lock body scroll when detail view is open
     useEffect(() => {
-        if (selectedService && sectionRef.current) {
-            sectionRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (selectedService) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
         }
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
     }, [selectedService]);
 
     const handleServiceClick = (service: typeof assistanceServices[0]) => {
@@ -127,64 +132,67 @@ const Assistance: React.FC = () => {
                     <div className="w-20 h-1 bg-yellow-600 mx-auto"></div>
                 </div>
 
-                {selectedService ? (
-                    // Detail View
-                    <div ref={detailRef} className="animate-fade-in-up">
-                        <button
-                            onClick={handleBackClick}
-                            className="flex items-center text-yellow-600 hover:text-yellow-700 transition-colors mb-8 group"
-                        >
-                            <svg className="w-5 h-5 mr-2 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
-                            </svg>
-                            <span className="uppercase tracking-widest text-sm font-semibold">Back to Assistance</span>
-                        </button>
+                {selectedService && (
+                    // Detail View Overlay
+                    <div className="fixed inset-0 z-[100] bg-white overflow-y-auto animate-fade-in-up">
+                        <div className="max-w-7xl mx-auto px-6 py-12 md:py-20 relative min-h-screen flex flex-col justify-center">
 
-                        <div className="bg-gray-50 border border-gray-200 p-10 md:p-14 rounded-lg relative overflow-hidden shadow-lg">
-                            {/* Background accent */}
-                            <div className="absolute top-0 right-0 w-64 h-64 bg-yellow-600/5 -mr-20 -mt-20 rounded-full blur-3xl pointer-events-none"></div>
 
-                            <div className="relative z-10">
-                                <div className="flex-grow w-full">
-                                    <h3 className="text-3xl md:text-4xl font-serif text-black mb-6">{selectedService.title}</h3>
+                            <div ref={detailRef} className="bg-gray-50 border border-gray-200 p-10 md:p-14 rounded-lg relative overflow-hidden shadow-lg mt-16 md:mt-0">
+                                {/* Close Button - Moved Inside Card */}
+                                <button
+                                    onClick={handleBackClick}
+                                    className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center text-yellow-600 hover:text-yellow-700 bg-white/50 hover:bg-white/80 backdrop-blur-md rounded-full transition-all group z-50 border border-gray-200"
+                                >
+                                    <svg className="w-5 h-5 transform group-hover:rotate-90 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+                                    </svg>
+                                </button>
+                                {/* Background accent */}
+                                <div className="absolute top-0 right-0 w-64 h-64 bg-yellow-600/5 -mr-20 -mt-20 rounded-full blur-3xl pointer-events-none"></div>
 
-                                    <div className="flex flex-col xl:flex-row gap-10 items-start">
-                                        {/*@ts-ignore*/}
-                                        {selectedService.image && (
-                                            <div className="w-full xl:w-2/5 flex-shrink-0 order-1 xl:order-1">
-                                                <div className="rounded-lg overflow-hidden border border-gray-200 shadow-xl">
-                                                    <img
-                                                        /*@ts-ignore*/
-                                                        src={selectedService.image}
-                                                        alt={selectedService.title}
-                                                        className="w-full object-cover hover:scale-105 transition-transform duration-700"
-                                                    />
+                                <div className="relative z-10">
+                                    <div className="flex-grow w-full">
+                                        <h3 className="text-3xl md:text-4xl font-serif text-black mb-6">{selectedService.title}</h3>
+
+                                        <div className="flex flex-col xl:flex-row gap-10 items-start">
+                                            {/*@ts-ignore*/}
+                                            {selectedService.image && (
+                                                <div className="w-full xl:w-2/5 flex-shrink-0 order-1 xl:order-1">
+                                                    <div className="rounded-lg overflow-hidden border border-gray-200 shadow-xl">
+                                                        <img
+                                                            /*@ts-ignore*/
+                                                            src={selectedService.image}
+                                                            alt={selectedService.title}
+                                                            className="w-full object-cover hover:scale-105 transition-transform duration-700"
+                                                        />
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        )}
+                                            )}
 
-                                        <div className="flex-1 order-2 xl:order-2">
-                                            <p className="text-xl text-gray-600 font-light leading-relaxed mb-8 border-l-2 border-yellow-600 pl-6">
-                                                {selectedService.description}
-                                            </p>
+                                            <div className="flex-1 order-2 xl:order-2">
+                                                <p className="text-xl text-gray-600 font-light leading-relaxed mb-8 border-l-2 border-yellow-600 pl-6">
+                                                    {selectedService.description}
+                                                </p>
 
-                                            <div className="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
-                                                <h4 className="text-yellow-600 uppercase tracking-wider text-xs font-bold mb-6">Service Highlights</h4>
-                                                <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8">
-                                                    {selectedService.details.map((point, idx) => (
-                                                        <li key={idx} className="flex items-start text-gray-700">
-                                                            <svg className="w-5 h-5 text-yellow-600 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                                                            </svg>
-                                                            <span className="leading-relaxed">{point}</span>
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                                {/* Terms and Conditions */}
-                                                <div className="mt-8 pt-6 border-t border-gray-100">
-                                                    <p className="text-[10px] text-gray-400 font-light tracking-wide uppercase">
-                                                        * Terms & Conditions: <span className="text-gray-500 normal-case tracking-normal">{selectedService.terms}</span>
-                                                    </p>
+                                                <div className="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+                                                    <h4 className="text-yellow-600 uppercase tracking-wider text-xs font-bold mb-6">Service Highlights</h4>
+                                                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8">
+                                                        {selectedService.details.map((point, idx) => (
+                                                            <li key={idx} className="flex items-start text-gray-700">
+                                                                <svg className="w-5 h-5 text-yellow-600 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                                                                </svg>
+                                                                <span className="leading-relaxed">{point}</span>
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                    {/* Terms and Conditions */}
+                                                    <div className="mt-8 pt-6 border-t border-gray-100">
+                                                        <p className="text-[10px] text-gray-400 font-light tracking-wide uppercase">
+                                                            * Terms & Conditions: <span className="text-gray-500 normal-case tracking-normal">{selectedService.terms}</span>
+                                                        </p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -193,29 +201,29 @@ const Assistance: React.FC = () => {
                             </div>
                         </div>
                     </div>
-                ) : (
-                    // Grid View
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        {assistanceServices.map((service, index) => (
-                            <div
-                                key={index}
-                                onClick={() => handleServiceClick(service)}
-                                style={{ transitionDelay: `${index * 150}ms` }}
-                                className={`group p-10 bg-gray-50 border border-gray-200 hover:border-yellow-600/50 hover:shadow-lg transition-all duration-500 hover:-translate-y-2 relative overflow-hidden reveal-item h-full flex flex-col cursor-pointer ${isRevealed ? 'revealed' : ''}`}
-                            >
-                                <div className="absolute top-0 right-0 w-24 h-24 bg-yellow-600/5 -mr-12 -mt-12 rounded-full group-hover:bg-yellow-600/10 transition-colors"></div>
-                                {service.icon}
-                                <div className="flex items-center justify-between mb-4">
-                                    <h3 className="text-2xl font-serif text-black group-hover:text-yellow-600 transition-colors">{service.title}</h3>
-                                    <svg className="w-6 h-6 text-gray-400 group-hover:text-yellow-600 transform group-hover:translate-x-1 transition-all opacity-0 group-hover:opacity-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                                    </svg>
-                                </div>
-                                <p className="text-gray-600 leading-relaxed font-light">{service.description}</p>
-                            </div>
-                        ))}
-                    </div>
                 )}
+
+                {/* Grid View */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {assistanceServices.map((service, index) => (
+                        <div
+                            key={index}
+                            onClick={() => handleServiceClick(service)}
+                            style={{ transitionDelay: `${index * 150}ms` }}
+                            className={`group p-10 bg-gray-50 border border-gray-200 hover:border-yellow-600/50 hover:shadow-lg transition-all duration-500 hover:-translate-y-2 relative overflow-hidden reveal-item h-full flex flex-col cursor-pointer ${isRevealed ? 'revealed' : ''}`}
+                        >
+                            <div className="absolute top-0 right-0 w-24 h-24 bg-yellow-600/5 -mr-12 -mt-12 rounded-full group-hover:bg-yellow-600/10 transition-colors"></div>
+                            {service.icon}
+                            <div className="flex items-center justify-between mb-4">
+                                <h3 className="text-2xl font-serif text-black group-hover:text-yellow-600 transition-colors">{service.title}</h3>
+                                <svg className="w-6 h-6 text-gray-400 group-hover:text-yellow-600 transform group-hover:translate-x-1 transition-all opacity-0 group-hover:opacity-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                </svg>
+                            </div>
+                            <p className="text-gray-600 leading-relaxed font-light">{service.description}</p>
+                        </div>
+                    ))}
+                </div>
             </div>
         </section>
     );
