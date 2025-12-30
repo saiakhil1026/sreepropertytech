@@ -41,7 +41,7 @@ const GeminiConcierge: React.FC = () => {
             </div>
             <button onClick={() => setIsOpen(false)} className="text-black hover:scale-110 transition-transform font-bold">×</button>
           </div>
-          
+
           <div ref={scrollRef} className="flex-1 p-4 overflow-y-auto space-y-4">
             {messages.length === 0 && (
               <div className="text-gray-400 text-sm italic text-center mt-10">
@@ -50,9 +50,8 @@ const GeminiConcierge: React.FC = () => {
             )}
             {messages.map((msg, i) => (
               <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                <div className={`max-w-[85%] p-3 rounded-lg text-xs leading-relaxed ${
-                  msg.role === 'user' ? 'bg-yellow-600/20 text-yellow-200 border border-yellow-600/30' : 'bg-white/5 text-gray-300'
-                }`}>
+                <div className={`max-w-[85%] p-3 rounded-lg text-xs leading-relaxed ${msg.role === 'user' ? 'bg-yellow-600/20 text-yellow-200 border border-yellow-600/30' : 'bg-white/5 text-gray-300'
+                  }`}>
                   {msg.content}
                 </div>
               </div>
@@ -68,14 +67,14 @@ const GeminiConcierge: React.FC = () => {
 
           <div className="p-3 border-t border-white/5 bg-black/40">
             <div className="flex space-x-2">
-              <input 
+              <input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && handleSend()}
                 placeholder="How do I manage TDS as an NRI?"
                 className="flex-1 bg-white/5 border border-white/10 rounded-md px-3 py-2 text-xs text-white focus:outline-none focus:border-yellow-600/50"
               />
-              <button 
+              <button
                 onClick={handleSend}
                 className="bg-yellow-600 text-black p-2 rounded-md hover:bg-yellow-500 transition-colors"
               >
@@ -85,11 +84,11 @@ const GeminiConcierge: React.FC = () => {
           </div>
         </div>
       ) : (
-        <button 
+        <button
           onClick={() => setIsOpen(true)}
-          className="w-16 h-16 bg-yellow-600 rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-all animate-float"
+          className="w-12 h-12 md:w-16 md:h-16 bg-yellow-600 rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-all animate-float"
         >
-          <svg className="w-8 h-8 text-black" fill="currentColor" viewBox="0 0 20 20"><path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z"></path><path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z"></path></svg>
+          <svg className="w-6 h-6 md:w-8 md:h-8 text-black" fill="currentColor" viewBox="0 0 20 20"><path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z"></path><path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z"></path></svg>
         </button>
       )}
     </div>
