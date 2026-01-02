@@ -46,7 +46,7 @@ const WhyUs: React.FC = () => {
 
           <div className={`reveal-item ${isRevealed ? 'revealed' : ''}`} style={{ transitionDelay: '200ms' }}>
             <span className="text-yellow-600 uppercase tracking-[0.3em] text-xs font-bold block mb-4">Dedicated to NRIs</span>
-            <h2 className="text-4xl md:text-5xl font-serif text-black mb-10 leading-tight">Your Home, Our Soul. Bridge the Miles.</h2>
+            <h2 className="text-4xl md:text-5xl font-serif text-black mb-10 leading-tight">Your Home, Our Soul. Bridge the Miles with Care.</h2>
             <div className="space-y-8">
               <div className="flex gap-6 group">
                 <div className="flex-shrink-0 w-12 h-12 rounded-full border border-black/10 flex items-center justify-center font-serif text-xl group-hover:bg-black group-hover:text-white transition-colors duration-300">01</div>

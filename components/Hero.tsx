@@ -18,7 +18,7 @@ const Hero: React.FC = () => {
           <span className="gradient-gold">Exclusively for NRIs</span>
         </h1>
         <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto font-light tracking-wide leading-relaxed">
-          Your Indian assets managed with global standards. We bridge the distance between your home and your heart, ensuring total peace of mind and maximum yield.
+          Your Indian assets managed with global standards. We bridge the distance between your home abroad and your roots in India, ensuring total peace of mind and maximum yield.
         </p>
         <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-6">
           <button
