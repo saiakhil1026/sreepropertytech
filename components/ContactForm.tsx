@@ -1,5 +1,6 @@
 
 import React, { useState, useMemo, useEffect, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 
 // Comprehensive list of countries with flags, ISO codes and dial codes
 const countryData = [
@@ -117,7 +118,10 @@ const ContactForm: React.FC = () => {
   });
   const [selectedCountryCode, setSelectedCountryCode] = useState('US');
   const [isVisible, setIsVisible] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
   const containerRef = useRef<HTMLDivElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -152,17 +156,38 @@ const ContactForm: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!formRef.current) return;
+
+    setStatus('sending');
     const fullPhone = `${selectedCountry.dial_code} ${formData.phone}`;
-    const subject = encodeURIComponent(`Invitation Request: ${formData.name}`);
-    const body = encodeURIComponent(
-      `Elite Asset Management Inquiry\n\n` +
-      `Name: ${formData.name}\n` +
-      `Email: ${formData.email}\n` +
-      `Phone: ${fullPhone}\n` +
-      `Country: ${selectedCountry.name}\n\n` +
-      `Description of Property/Requirements:\n${formData.description}`
-    );
-    window.location.href = `mailto:sreepropertytech@gmail.com?subject=${subject}&body=${body}`;
+
+    // Prepare template params matching most common EmailJS setups
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      phone: fullPhone,
+      country: selectedCountry.name,
+      message: formData.description,
+      to_name: 'Sree Property Tech', // Adjust as needed
+    };
+
+    // REPLACE THESE WITH YOUR ACTUAL EMAILJS SERVICE ID, TEMPLATE ID, AND PUBLIC KEY
+    const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID';
+    const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID';
+    const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY';
+
+    emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
+      .then((result) => {
+        console.log(result.text);
+        setStatus('success');
+        setFormData({ name: '', email: '', phone: '', description: '' });
+        setTimeout(() => setStatus('idle'), 5000);
+      }, (error) => {
+        console.log(error.text);
+        setErrorMessage(error.text || 'Failed to send');
+        setStatus('error');
+        // setTimeout(() => setStatus('idle'), 5000); // Keep error visible for debugging
+      });
   };
 
   const getEntranceClass = (delay: number) => {
@@ -185,7 +210,7 @@ const ContactForm: React.FC = () => {
         <p className="text-gray-500 text-xs uppercase tracking-widest font-light">Reserved for High-Net-Worth Individuals</p>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
         <div className={`${fieldGroupClass} ${getEntranceClass(100)}`} style={{ transitionDelay: '100ms' }}>
           <input
             required
@@ -266,11 +291,40 @@ const ContactForm: React.FC = () => {
         <div className={`pt-4 ${getEntranceClass(500)}`} style={{ transitionDelay: '500ms' }}>
           <button
             type="submit"
-            className="w-full relative overflow-hidden bg-yellow-600 text-black font-bold uppercase tracking-[0.2em] text-xs py-5 hover:bg-yellow-500 transition-all shadow-xl hover:scale-[1.01] active:scale-95 group/btn"
+            disabled={status === 'sending'}
+            className="w-full relative overflow-hidden bg-yellow-600 text-black font-bold uppercase tracking-[0.2em] text-xs py-5 hover:bg-yellow-500 transition-all shadow-xl hover:scale-[1.01] active:scale-95 group/btn disabled:opacity-70 disabled:cursor-not-allowed"
           >
             <div className="absolute inset-0 shimmer-bg opacity-0 group-hover/btn:opacity-100 transition-opacity pointer-events-none"></div>
-            <span className="relative z-10">Submit Request</span>
+            <span className="relative z-10">
+              {status === 'sending' ? 'Sending Request...' : 'Submit Request'}
+            </span>
           </button>
+
+          {status === 'success' && (
+            <p className="mt-4 text-green-400 text-xs text-center uppercase tracking-widest">
+              Request Sent Successfully. We will contact you shortly.
+            </p>
+          )}
+
+          {status === 'error' && (
+            <div className="mt-4 text-center">
+              <p className="text-red-400 text-xs uppercase tracking-widest mb-2">
+                Failed to send request.
+              </p>
+              <p className="text-red-500/80 text-[10px] font-mono">
+                Error: {errorMessage || 'Unknown error'}
+              </p>
+              {(
+                !import.meta.env.VITE_EMAILJS_SERVICE_ID ||
+                !import.meta.env.VITE_EMAILJS_TEMPLATE_ID ||
+                !import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+              ) && (
+                  <p className="text-yellow-500/80 text-[10px] font-mono mt-1">
+                    ⚠️ Missing API Keys in .env.local
+                  </p>
+                )}
+            </div>
+          )}
         </div>
 
         <div className={`flex items-center justify-center space-x-4 mt-6 opacity-40 ${getEntranceClass(600)}`} style={{ transitionDelay: '600ms' }}>

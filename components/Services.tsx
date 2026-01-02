@@ -11,7 +11,8 @@ const services = [
       "Legal verification and documentation support.",
       "Expert negotiation to secure the best deal.",
       "Seamless transaction management from start to finish.",
-      "Access to exclusive off-market listings."
+      "Access to exclusive off-market listings.",
+      ""
     ],
     terms: "Subject to clear title verification & market standard brokerage fees.",
     image: "/property_buy_sell.png",
