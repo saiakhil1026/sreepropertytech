@@ -116,6 +116,7 @@ const ContactForm: React.FC = () => {
     phone: '',
     description: ''
   });
+  const [agreed, setAgreed] = useState(false);
   const [selectedCountryCode, setSelectedCountryCode] = useState('US');
   const [isVisible, setIsVisible] = useState(false);
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
@@ -157,6 +158,12 @@ const ContactForm: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formRef.current) return;
+
+    if (!agreed) {
+      setErrorMessage('Please agree to the terms and authorize notifications.');
+      setStatus('error');
+      return;
+    }
 
     setStatus('sending');
     const fullPhone = `${selectedCountry.dial_code} ${formData.phone}`;
@@ -288,54 +295,85 @@ const ContactForm: React.FC = () => {
           ></textarea>
         </div>
 
-        <div className={`pt-4 ${getEntranceClass(500)}`} style={{ transitionDelay: '500ms' }}>
-          <button
-            type="submit"
-            disabled={status === 'sending'}
-            className="w-full relative overflow-hidden bg-yellow-600 text-black font-bold uppercase tracking-[0.2em] text-xs py-5 hover:bg-yellow-500 transition-all shadow-xl hover:scale-[1.01] active:scale-95 group/btn disabled:opacity-70 disabled:cursor-not-allowed"
-          >
-            <div className="absolute inset-0 shimmer-bg opacity-0 group-hover/btn:opacity-100 transition-opacity pointer-events-none"></div>
-            <span className="relative z-10">
-              {status === 'sending' ? 'Sending Request...' : 'Submit Request'}
-            </span>
-          </button>
-
-          {status === 'success' && (
-            <p className="mt-4 text-green-400 text-xs text-center uppercase tracking-widest">
-              Request Sent Successfully. We will contact you shortly.
-            </p>
-          )}
-
-          {status === 'error' && (
-            <div className="mt-4 text-center">
-              <p className="text-red-400 text-xs uppercase tracking-widest mb-2">
-                Failed to send request.
-              </p>
-              <p className="text-red-500/80 text-[10px] font-mono">
-                Error: {errorMessage || 'Unknown error'}
-              </p>
-              {(
-                !import.meta.env.VITE_EMAILJS_SERVICE_ID ||
-                !import.meta.env.VITE_EMAILJS_TEMPLATE_ID ||
-                !import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-              ) && (
-                  <p className="text-yellow-500/80 text-[10px] font-mono mt-1">
-                    ⚠️ Missing API Keys in .env.local
-                  </p>
-                )}
-            </div>
-          )}
-        </div>
-
         <div className={`flex items-center justify-center space-x-4 mt-6 opacity-40 ${getEntranceClass(600)}`} style={{ transitionDelay: '600ms' }}>
           <div className="h-px w-8 bg-white/20"></div>
-          <p className="text-[9px] text-gray-400 uppercase tracking-[0.3em] font-bold">
+          <p className="text-xs text-gray-400 uppercase tracking-[0.3em] font-bold">
             Secure NRI Encryption
           </p>
           <div className="h-px w-8 bg-white/20"></div>
         </div>
-      </form>
-    </div>
+
+        <div className={`space-y-6 ${getEntranceClass(700)}`} style={{ transitionDelay: '700ms' }}>
+          <p className="text-xs text-gray-400 leading-relaxed text-center">
+            By clicking Submit Request, you agree to our <span className="text-yellow-500 cursor-pointer hover:underline">Terms of Service</span> and that you have read our <span className="text-yellow-500 cursor-pointer hover:underline">Privacy Policy</span>
+          </p>
+
+          <div className="flex items-start space-x-3">
+            <div className="relative flex items-center">
+              <input
+                required
+                type="checkbox"
+                id="consent"
+                checked={agreed}
+                onChange={(e) => setAgreed(e.target.checked)}
+                className="peer h-4 w-4 shrink-0 cursor-pointer appearance-none rounded-sm border border-white/20 bg-white/5 checked:border-yellow-600 checked:bg-yellow-600 focus:outline-none focus:ring-1 focus:ring-yellow-600/50 transition-all"
+              />
+              <svg
+                className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 text-black opacity-0 peer-checked:opacity-100 transition-opacity"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth="3"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <label htmlFor="consent" className="text-xs text-gray-400 cursor-pointer select-none leading-tight">
+              I hereby authorize to send notification on SMS/Messages/Promotional/Informational messages <span className="text-red-500">*</span>
+            </label>
+          </div>
+
+          <div className="pt-2">
+            <button
+              type="submit"
+              disabled={status === 'sending'}
+              className="w-full relative overflow-hidden bg-yellow-600 text-black font-bold uppercase tracking-[0.2em] text-xs py-5 hover:bg-yellow-500 transition-all shadow-xl hover:scale-[1.01] active:scale-95 group/btn disabled:opacity-70 disabled:cursor-not-allowed"
+            >
+              <div className="absolute inset-0 shimmer-bg opacity-0 group-hover/btn:opacity-100 transition-opacity pointer-events-none"></div>
+              <span className="relative z-10">
+                {status === 'sending' ? 'Sending Request...' : 'Submit Request'}
+              </span>
+            </button>
+
+            {status === 'success' && (
+              <p className="mt-4 text-green-400 text-xs text-center uppercase tracking-widest">
+                Request Sent Successfully. We will contact you shortly.
+              </p>
+            )}
+
+            {status === 'error' && (
+              <div className="mt-4 text-center">
+                <p className="text-red-400 text-xs uppercase tracking-widest mb-2">
+                  Failed to send request.
+                </p>
+                <p className="text-red-500/80 text-[10px] font-mono">
+                  Error: {errorMessage || 'Unknown error'}
+                </p>
+                {(
+                  !import.meta.env.VITE_EMAILJS_SERVICE_ID ||
+                  !import.meta.env.VITE_EMAILJS_TEMPLATE_ID ||
+                  !import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+                ) && (
+                    <p className="text-yellow-500/80 text-[10px] font-mono mt-1">
+                      ⚠️ Missing API Keys in .env.local
+                    </p>
+                  )}
+              </div>
+            )}
+          </div>
+        </div>
+      </form >
+    </div >
   );
 };
 
