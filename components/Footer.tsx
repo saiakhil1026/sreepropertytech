@@ -1,9 +1,11 @@
-
-import React from 'react';
+import React, { useState } from 'react';
 import ContactForm from './ContactForm';
+import LegalModal from './LegalModal';
+import { legalContent } from '../data/legalData';
 
 const Footer: React.FC = () => {
   const [isRevealed, setIsRevealed] = React.useState(false);
+  const [activeLegalDoc, setActiveLegalDoc] = useState<keyof typeof legalContent | null>(null);
   const sectionRef = React.useRef<HTMLElement>(null);
 
   React.useEffect(() => {
@@ -116,11 +118,17 @@ const Footer: React.FC = () => {
 
         {/* Footer Legal Bottom */}
         <div className="pt-8 flex flex-col md:flex-row justify-end items-center text-gray-700 text-[9px] uppercase tracking-widest font-bold gap-6">
-          <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-          <a href="#" className="hover:text-white transition-colors">Terms and Conditions</a>
-          <a href="#" className="hover:text-white transition-colors">Grievance Cell</a>
+          <button onClick={() => setActiveLegalDoc('privacyPolicy')} className="hover:text-white transition-colors">Privacy Policy</button>
+          <button onClick={() => setActiveLegalDoc('termsAndConditions')} className="hover:text-white transition-colors">Terms and Conditions</button>
+          <button onClick={() => setActiveLegalDoc('grievanceCell')} className="hover:text-white transition-colors">Grievance Cell</button>
         </div>
       </div>
+
+      <LegalModal
+        isOpen={!!activeLegalDoc}
+        onClose={() => setActiveLegalDoc(null)}
+        content={activeLegalDoc ? legalContent[activeLegalDoc] : null}
+      />
     </footer>
   );
 };
