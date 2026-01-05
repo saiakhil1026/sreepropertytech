@@ -12,7 +12,7 @@ const services = [
       "Expert negotiation to secure the best deal.",
       "Seamless transaction management from start to finish.",
       "Access to exclusive off-market listings.",
-      ""
+      "We will assist you to get loan for your property."
     ],
     terms: "Subject to clear title verification & market standard brokerage fees.",
     image: "/property_buy_sell.png",
