@@ -99,7 +99,7 @@ const Footer: React.FC = () => {
 
             <div className="hidden lg:block pt-12">
               <div className="text-[10px] text-gray-600 uppercase tracking-widest font-bold">
-                © 2025 SreePropertyTech. All Rights Reserved.
+                © 2026 SreePropertyTech. All Rights Reserved.
               </div>
             </div>
           </div>
@@ -113,7 +113,7 @@ const Footer: React.FC = () => {
 
         {/* Mobile Copyright */}
         <div className="lg:hidden border-t border-white/5 pt-8 text-center text-[10px] text-gray-600 uppercase tracking-widest font-bold">
-          © 2025 SreePropertyTech. All Rights Reserved.
+          © 2026 SreePropertyTech. All Rights Reserved.
         </div>
 
         {/* Footer Legal Bottom */}
