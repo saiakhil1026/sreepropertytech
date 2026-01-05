@@ -6,7 +6,7 @@ const assistanceServices = [
         title: "Guardian Assistance",
         description: "Distance shouldn't compromise the care your parents deserve. We become family when you can't be there.",
         details: [
-            "Holistic Health Monitoring (Vitals, medication, doctor visits).",
+            "Holistic Health Monitoring (Medication,Lab tests at your door step).",
             "Emergency Response & Logistics (Ambulance, hospital coordination).",
             "Companionship & Comfort (Social visits, emotional support).",
             "Regular updates to family members abroad.",
@@ -103,6 +103,18 @@ const Assistance: React.FC = () => {
         };
     }, []);
 
+    useEffect(() => {
+        const handlePopState = (event: PopStateEvent) => {
+            setSelectedService(null);
+        };
+
+        window.addEventListener('popstate', handlePopState);
+
+        return () => {
+            window.removeEventListener('popstate', handlePopState);
+        };
+    }, []);
+
     // Lock body scroll when detail view is open
     useEffect(() => {
         if (selectedService) {
@@ -116,11 +128,12 @@ const Assistance: React.FC = () => {
     }, [selectedService]);
 
     const handleServiceClick = (service: typeof assistanceServices[0]) => {
+        window.history.pushState({ modal: 'assistance' }, '', window.location.href);
         setSelectedService(service);
     };
 
     const handleBackClick = () => {
-        setSelectedService(null);
+        window.history.back();
     };
 
     return (

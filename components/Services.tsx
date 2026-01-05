@@ -145,6 +145,18 @@ const Services: React.FC = () => {
   // Scroll to top of section when detail view opens - Not strictly needed with overlay, but good backup.
   // Actually, with overlay, we don't need to scroll the section.
 
+  useEffect(() => {
+    const handlePopState = (event: PopStateEvent) => {
+      setSelectedService(null);
+    };
+
+    window.addEventListener('popstate', handlePopState);
+
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, []);
+
   // Lock body scroll when detail view is open
   useEffect(() => {
     if (selectedService) {
@@ -159,11 +171,12 @@ const Services: React.FC = () => {
 
 
   const handleServiceClick = (service: typeof services[0]) => {
+    window.history.pushState({ modal: 'services' }, '', window.location.href);
     setSelectedService(service);
   };
 
   const handleBackClick = () => {
-    setSelectedService(null);
+    window.history.back();
   };
 
   return (
