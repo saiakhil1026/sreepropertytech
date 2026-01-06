@@ -5,27 +5,27 @@ import React, { useEffect, useRef, useState } from 'react';
 const reviews = [
     {
         review: "The level of care and attention to detail SreePropertyTech provides is unmatched. I finally have peace of mind regarding my parents' wellbeing and my property assets.",
-        author: "Arjun Reddy"
+        author: "Suresh Sukhavasi"
     },
     {
         review: "Being in the US, managing properties in India was a nightmare until I found them. Their transparency and professional updates are exactly what I needed.",
-        author: "Priya Sharma"
+        author: "Nagesh Nimmagadda"
     },
     {
         review: "Their Guardian Assistance service is a blessing. Knowing someone reliable is there for my elderly parents for medical visits makes all the difference.",
-        author: "Rahul Krishnan"
+        author: " Sai Poojitha Kurra"
     },
-    {
-        review: "From tenant management to legal documentation, they handled everything seamlessly. The best investment partners I've worked with.",
-        author: "Anita Menon"
-    },
+    // {
+    //     review: "From tenant management to legal documentation, they handled everything seamlessly. The best investment partners I've worked with.",
+    //     author: "Harish Gullapalli"
+    // },
     {
         review: "Truly premium service. They understand the expectations of NRIs and deliver luxury experiences. Highly recommended for anyone looking for reliability.",
-        author: "Vikram Thapa"
+        author: "Janaki Ch"
     },
     {
         review: "Values are core to their business. Trustworthy, efficient, and always available. They have transformed how I manage my Indian assets.",
-        author: "Meera Patel"
+        author: "Harish Gullapalli"
     }
 ];
 
