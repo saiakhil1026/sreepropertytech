@@ -46,7 +46,7 @@ function App() {
           <div className="relative z-10 max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-10">
             <div className="max-w-2xl">
               <h2 className="text-4xl md:text-5xl font-serif text-black mb-4">Start Your Elite Journey</h2>
-              <p className="text-black/80 font-medium tracking-wide">Join 500+ HNI NRIs who trust SreePropertyTech with their Indian assets.</p>
+              <p className="text-black/80 font-medium tracking-wide">Join HNI NRIs who trust SreePropertyTech with their Indian assets.</p>
             </div>
             <button
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}

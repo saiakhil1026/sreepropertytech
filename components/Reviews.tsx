@@ -12,7 +12,7 @@ const reviews = [
         author: "Nagesh Nimmagadda"
     },
     {
-        review: "Their Guardian Assistance service is a blessing. Knowing someone reliable is there for my elderly parents for medical visits makes all the difference.",
+        review: "For property buying, legal documentation process was a breeze with SreePropertyTech. Their expertise and attention to detail made the entire process smooth and stress-free.",
         author: " Sai Poojitha Kurra"
     },
     // {
@@ -113,11 +113,11 @@ const Reviews: React.FC = () => {
                         >
                             <div className="h-full p-10 bg-gray-50 border border-gray-100 rounded-lg hover:shadow-xl hover:border-yellow-600/30 transition-all duration-300 group relative">
                                 {/* Quote Icon */}
-                                <div className="absolute top-8 right-8 text-yellow-600/20 group-hover:text-yellow-600/40 transition-colors">
-                                    <svg className="w-16 h-16" fill="currentColor" viewBox="0 0 24 24">
+                                { /* <div className="absolute top-8 right-8 text-yellow-600/20 group-hover:text-yellow-600/40 transition-colors">
+                                    <svg className="w-16 h-16" fill="currentColor" viewBox="0 0 24 24" >
                                         <path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 8.44772 14.017 9V11C14.017 11.5523 13.5693 12 13.017 12H12.017V5H22.017V15C22.017 18.3137 19.3307 21 16.017 21H14.017ZM5.01691 21L5.01691 18C5.01691 16.8954 5.91234 16 7.01691 16H10.0169C10.5692 16 11.0169 15.5523 11.0169 15V9C11.0169 8.44772 10.5692 8 10.0169 8H6.01691C5.46462 8 5.01691 8.44772 5.01691 9V11C5.01691 11.5523 4.56919 12 4.01691 12H3.01691V5H13.0169V15C13.0169 18.3137 10.3306 21 7.01691 21H5.01691Z"></path>
                                     </svg>
-                                </div>
+                                </div> */}
 
                                 <div className="flex flex-col h-full justify-between relative z-10">
                                     <p className="text-xl md:text-2xl font-serif italic text-gray-700 leading-relaxed mb-8">
