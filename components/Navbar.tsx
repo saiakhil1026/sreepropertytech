@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [textColor, setTextColor] = useState<'white' | 'black'>('white');
+  const menuRef = React.useRef<HTMLDivElement>(null);
+  const buttonRef = React.useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,6 +49,37 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Handle click outside and scroll to close menu
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        isMobileMenuOpen &&
+        menuRef.current &&
+        !menuRef.current.contains(event.target as Node) &&
+        buttonRef.current &&
+        !buttonRef.current.contains(event.target as Node)
+      ) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    const handleScrollClose = () => {
+      if (isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    if (isMobileMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      window.addEventListener('scroll', handleScrollClose);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      window.removeEventListener('scroll', handleScrollClose);
+    };
+  }, [isMobileMenuOpen]);
+
   const textClass = textColor === 'white' ? 'text-white' : 'text-black';
   const logoBgClass = textColor === 'white'
     ? 'bg-gradient-to-tr from-yellow-600 to-yellow-200 text-black'
@@ -57,6 +90,7 @@ const Navbar: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 md:px-6 h-16 md:h-20 flex items-center justify-between">
         {/* Brand/Logo - Clickable on mobile to toggle menu */}
         <div
+          ref={buttonRef}
           className="flex items-center space-x-2 cursor-pointer md:cursor-default"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
@@ -78,40 +112,42 @@ const Navbar: React.FC = () => {
       </div>
 
       {/* Mobile Navigation Dropdown */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 glass border-t border-white/10 animate-fade-in-down shadow-2xl">
-          <div className="flex flex-col p-4 space-y-1">
-            <a
-              href="#about"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className={`px-4 py-3 text-left text-xl font-bold tracking-widest uppercase rounded-lg transition-all duration-300 border-l-2 border-transparent hover:border-yellow-500 ${textColor === 'white' ? 'text-gray-300 hover:bg-white/5 hover:text-yellow-500' : 'text-gray-800 hover:bg-black/5 hover:text-black'}`}
-            >
-              Why NRIs
-            </a>
-            <a
-              href="#services"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className={`px-4 py-3 text-left text-xl font-bold tracking-widest uppercase rounded-lg transition-all duration-300 border-l-2 border-transparent hover:border-yellow-500 ${textColor === 'white' ? 'text-gray-300 hover:bg-white/5 hover:text-yellow-500' : 'text-gray-800 hover:bg-black/5 hover:text-black'}`}
-            >
-              Services
-            </a>
-            <a
-              href="#assistance"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className={`px-4 py-3 text-left text-xl font-bold tracking-widest uppercase rounded-lg transition-all duration-300 border-l-2 border-transparent hover:border-yellow-500 ${textColor === 'white' ? 'text-gray-300 hover:bg-white/5 hover:text-yellow-500' : 'text-gray-800 hover:bg-black/5 hover:text-black'}`}
-            >
-              Assistance
-            </a>
-            <a
-              href="#contact"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className={`px-4 py-3 text-left text-xl font-bold tracking-widest uppercase rounded-lg transition-all duration-300 border-l-2 border-transparent hover:border-yellow-500 ${textColor === 'white' ? 'text-gray-300 hover:bg-white/5 hover:text-yellow-500' : 'text-gray-800 hover:bg-black/5 hover:text-black'}`}
-            >
-              Contact
-            </a>
-          </div>
+      {/* Mobile Navigation Dropdown */}
+      <div
+        ref={menuRef}
+        className={`md:hidden absolute top-full left-6 mt-2 w-64 bg-gradient-to-b from-neutral-900/95 to-black/95 backdrop-blur-2xl z-40 rounded-xl border border-[#d4af37]/30 shadow-[0_0_30px_rgba(0,0,0,0.5)] transition-all duration-300 origin-top-left ${isMobileMenuOpen ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-95 pointer-events-none'}`}
+      >
+        <div className="flex flex-col p-4 space-y-1">
+          <a
+            href="#about"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="px-4 py-3 text-left text-lg font-bold tracking-widest uppercase rounded-lg transition-all duration-300 border-l-2 border-transparent hover:border-[#d4af37] text-gray-300 hover:bg-white/5 hover:text-[#d4af37]"
+          >
+            Why NRIs
+          </a>
+          <a
+            href="#services"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="px-4 py-3 text-left text-lg font-bold tracking-widest uppercase rounded-lg transition-all duration-300 border-l-2 border-transparent hover:border-[#d4af37] text-gray-300 hover:bg-white/5 hover:text-[#d4af37]"
+          >
+            Services
+          </a>
+          <a
+            href="#assistance"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="px-4 py-3 text-left text-lg font-bold tracking-widest uppercase rounded-lg transition-all duration-300 border-l-2 border-transparent hover:border-[#d4af37] text-gray-300 hover:bg-white/5 hover:text-[#d4af37]"
+          >
+            Assistance
+          </a>
+          <a
+            href="#contact"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="px-4 py-3 text-left text-lg font-bold tracking-widest uppercase rounded-lg transition-all duration-300 border-l-2 border-transparent hover:border-[#d4af37] text-gray-300 hover:bg-white/5 hover:text-[#d4af37]"
+          >
+            Contact
+          </a>
         </div>
-      )}
+      </div>
     </nav>
   );
 };

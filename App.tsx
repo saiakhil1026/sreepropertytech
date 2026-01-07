@@ -62,7 +62,7 @@ function App() {
         {/* The Contact/Enquiry logic is now integrated into the Footer for a split-screen premium layout */}
       </main>
       <Footer />
-      <GeminiConcierge />
+      {/* <GeminiConcierge /> */}
       <WhatsAppFloat />
     </div>
   );
