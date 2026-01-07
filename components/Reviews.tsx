@@ -21,7 +21,7 @@ const reviews = [
     // },
     {
         review: "Truly premium service. They understand the expectations of NRIs and deliver luxury experiences. Highly recommended for anyone looking for reliability.",
-        author: "Janaki Ch"
+        author: "Sai Krishna Yella"
     },
     {
         review: "Values are core to their business. Trustworthy, efficient, and always available. They have transformed how I manage my Indian assets.",
