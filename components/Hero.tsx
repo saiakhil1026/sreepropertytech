@@ -3,7 +3,7 @@ import React from 'react';
 
 const Hero: React.FC = () => {
   return (
-    <div id="hero" className="relative h-screen w-full flex items-center justify-center overflow-hidden">
+    <div id="hero" className="relative h-[100dvh] w-full flex items-center justify-center overflow-hidden">
       {/* Background with Parallax-like feel */}
       <div
         className="absolute inset-0 bg-cover bg-center z-0 scale-110"
@@ -13,7 +13,7 @@ const Hero: React.FC = () => {
       </div>
 
       <div className="relative z-10 text-center max-w-5xl px-6">
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif text-white mb-8 leading-tight animate-fade-in-up">
+        <h1 className="text-4xl md:text-5xl lg:text-7xl font-serif text-white mb-8 leading-tight animate-fade-in-up">
           Property Care <br />
           <span className="gradient-gold">Exclusively for NRIs</span>
         </h1>
@@ -23,7 +23,7 @@ const Hero: React.FC = () => {
         <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-6">
           <button
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-            className="w-full md:w-auto px-10 py-5 bg-white text-black font-bold uppercase tracking-widest hover:bg-yellow-500 transition-all"
+            className="w-auto px-10 py-5 bg-white text-black font-bold uppercase tracking-widest hover:bg-yellow-500 transition-all"
           >
             Inquire Now
           </button>
