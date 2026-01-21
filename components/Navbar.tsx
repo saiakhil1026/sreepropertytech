@@ -91,7 +91,7 @@ const Navbar: React.FC = () => {
         {/* Brand/Logo - Clickable on mobile to toggle menu */}
         <div
           ref={buttonRef}
-          className="flex items-center space-x-2 cursor-pointer md:cursor-default"
+          className="flex items-center space-x-2 cursor-pointer lg:cursor-default"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           <div className={`w-8 h-8 md:w-10 md:h-10 rounded-lg flex items-center justify-center font-bold text-lg md:text-xl transition-colors duration-300 ${logoBgClass}`}>S</div>
@@ -99,7 +99,7 @@ const Navbar: React.FC = () => {
         </div>
 
         {/* Desktop Navigation */}
-        <div className={`hidden md:flex items-center space-x-10 text-sm font-medium tracking-widest uppercase transition-colors duration-300 ${textColor === 'white' ? 'text-gray-300' : 'text-gray-800'}`}>
+        <div className={`hidden lg:flex items-center space-x-10 text-sm font-medium tracking-widest uppercase transition-colors duration-300 ${textColor === 'white' ? 'text-gray-300' : 'text-gray-800'}`}>
           <a href="#about" className="hover:text-yellow-500 transition-colors">Why NRIs</a>
           <a href="#services" className="hover:text-yellow-500 transition-colors">Services</a>
           <a href="#assistance" className="hover:text-yellow-500 transition-colors">Assistance</a>
@@ -115,7 +115,7 @@ const Navbar: React.FC = () => {
       {/* Mobile Navigation Dropdown */}
       <div
         ref={menuRef}
-        className={`md:hidden absolute top-full left-6 mt-2 w-64 bg-gradient-to-b from-neutral-900/95 to-black/95 backdrop-blur-2xl z-40 rounded-xl border border-[#d4af37]/30 shadow-[0_0_30px_rgba(0,0,0,0.5)] transition-all duration-300 origin-top-left ${isMobileMenuOpen ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-95 pointer-events-none'}`}
+        className={`lg:hidden absolute top-full left-6 mt-2 w-64 bg-gradient-to-b from-neutral-900/95 to-black/95 backdrop-blur-2xl z-40 rounded-xl border border-[#d4af37]/30 shadow-[0_0_30px_rgba(0,0,0,0.5)] transition-all duration-300 origin-top-left ${isMobileMenuOpen ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-95 pointer-events-none'}`}
       >
         <div className="flex flex-col p-4 space-y-1">
           <a
