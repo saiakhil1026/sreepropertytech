@@ -113,9 +113,43 @@ const services = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
       </svg>
     )
+  },
+  {
+    title: "Auditing & Compliance",
+    description: "Comprehensive auditing and compliance services to ensure your property investments are secure and legally sound.",
+    details: [
+      "Financial audit of property transactions.",
+      "Tax compliance and GST advisory for real estate.",
+      "Verification of municipal approvals and permits.",
+      "Audit of property management records.",
+      "Due diligence for large-scale acquisitions."
+    ],
+    terms: "Audits are based on provided records. Additional government fees may apply.",
+    image: "/auditing.png",
+    icon: (
+      <svg className="w-10 h-10 mb-4 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+      </svg>
+    )
+  },
+  {
+    title: "Financing & Loans",
+    description: "Tailored financial solutions and loan assistance to help you acquire your dream property with ease.",
+    details: [
+      "Home loan assistance with leading banks.",
+      "Loan against property (LAP) advisory.",
+      "Construction and plot loan facilitation.",
+      "Competitive interest rate negotiation.",
+      "Step-by-step guidance on documentation and eligibility."
+    ],
+    terms: "Loan approval is subject to bank criteria and credit score. Processing fees apply.",
+    image: "/loan_services.png",
+    icon: (
+      <svg className="w-10 h-10 mb-4 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+      </svg>
+    )
   }
-
-
 ];
 
 const Services: React.FC = () => {

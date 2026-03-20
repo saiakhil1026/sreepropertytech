@@ -8,7 +8,7 @@ const reviews = [
         author: "Suresh Sukhavasi"
     },
     {
-        review: "Being in the US, managing properties in India was a nightmare until I found them. Their transparency and professional updates are exactly what I needed.",
+        review: "Being in the US, managing properties in India was a nightmare until I found them. Their transparency and professional updates are exactly  I needed.",
         author: "Nagesh Nimmagadda"
     },
     {
